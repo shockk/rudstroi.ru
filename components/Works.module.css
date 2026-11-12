@@ -9,7 +9,7 @@
   position: relative;
   border-radius: var(--radius-card);
   overflow: hidden;
-  margin: 0;
+  display: block;
 }
 
 .work:first-child {
@@ -18,9 +18,14 @@
 
 .work img {
   object-fit: cover;
+  transition: transform 0.3s;
 }
 
-.work figcaption {
+.work:hover img {
+  transform: scale(1.03);
+}
+
+.cap {
   position: absolute;
   left: 0;
   right: 0;
@@ -30,12 +35,12 @@
   background: linear-gradient(0deg, rgb(0 0 0 / 0.72), transparent);
 }
 
-.work strong {
+.cap strong {
   display: block;
   font-size: 18px;
 }
 
-.work span {
+.cap span {
   font-size: 14px;
   color: var(--on-dark-muted);
 }

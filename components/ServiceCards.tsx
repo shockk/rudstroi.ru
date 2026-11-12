@@ -9,7 +9,13 @@ export function ServiceCards({ items }: { items: Service[] }) {
       {items.map((s) => (
         <Link key={s.slug} href={`/uslugi/${s.slug}/`} className={styles.card}>
           <div className={styles.img}>
-            <Image src={s.image} alt={s.title} fill sizes="(max-width: 900px) 100vw, 400px" />
+            <Image
+              src={s.image}
+              alt={s.title}
+              fill
+              sizes="(max-width: 900px) 100vw, 400px"
+              style={s.imagePosition ? { objectPosition: s.imagePosition } : undefined}
+            />
           </div>
           <div className={styles.body}>
             <h3>{s.title}</h3>

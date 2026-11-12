@@ -4,14 +4,22 @@
 
 export type Season = 'summer' | 'winter' | 'all';
 
+export type Photo = { src: string; alt: string; caption?: string };
+
 export type Service = {
   slug: string;
   title: string;
   short: string;
   description: string[];
   image: string;
+  /** Какую часть фото показывать при обрезке, CSS object-position */
+  imagePosition?: string;
   season: Season;
+  /** Фото наших работ для галереи на странице услуги */
+  gallery?: Photo[];
 };
+
+const local = (dir: string, name: string) => `/images/${dir}/${name}.webp`;
 
 const unsplash = (id: string) => `https://images.unsplash.com/${id}?w=1200&q=75&auto=format&fit=crop`;
 
@@ -48,6 +56,28 @@ export const services: Service[] = [
     ],
     image: unsplash('photo-1563714193017-5a5fb60bc02b'),
     season: 'summer',
+  },
+  {
+    slug: 'vhodnye-gruppy',
+    title: 'Входные группы и крыльцо',
+    short: 'Крыльцо и ступени для частного дома: плитка, клинкер, камень, прямые и радиусные.',
+    description: [
+      'Делаем входные группы для частных домов под ключ: бетонное основание, ступени и площадка крыльца, облицовка плиткой, клинкером или камнем.',
+      'Строим прямые и радиусные (полукруглые) лестницы, подбираем облицовку под фасад дома. Ступени делаем с выносом и уклоном для стока воды — зимой на них не застаивается лёд.',
+    ],
+    image: local('vhodnye-gruppy', 'kryltso-polukrugloe-gotovo'),
+    imagePosition: '50% 38%',
+    season: 'summer',
+    gallery: [
+      { src: local('vhodnye-gruppy', 'kryltso-polukrugloe-gotovo'), alt: 'Полукруглое крыльцо из камня у кирпичного дома', caption: 'Полукруглое крыльцо из камня' },
+      { src: local('vhodnye-gruppy', 'kryltso-seraya-plitka'), alt: 'Крыльцо и ступени из серой плитки', caption: 'Ступени и площадка из серой плитки' },
+      { src: local('vhodnye-gruppy', 'kryltso-klinker'), alt: 'Крыльцо из красного клинкера', caption: 'Крыльцо из клинкерной плитки' },
+      { src: local('vhodnye-gruppy', 'kryltso-polukrugloe-ukladka'), alt: 'Укладка облицовки на полукруглые ступени', caption: 'Радиусные ступени в процессе облицовки' },
+      { src: local('vhodnye-gruppy', 'stupeni-radiusnye-ukladka'), alt: 'Облицовка радиусных ступеней светлым камнем', caption: 'Облицовка радиусных ступеней' },
+      { src: local('vhodnye-gruppy', 'stupeni-radiusnye-process'), alt: 'Выкладка подступенков по радиусу', caption: 'Выкладка подступенков по радиусу' },
+      { src: local('vhodnye-gruppy', 'kryltso-seraya-plitka-ukladka'), alt: 'Мастер затирает швы на ступенях крыльца', caption: 'Затирка швов на ступенях' },
+      { src: local('vhodnye-gruppy', 'stupeni-radiusnye-osnovanie'), alt: 'Бетонное основание радиусных ступеней с подступенками', caption: 'Основание и подступенки' },
+    ],
   },
   {
     slug: 'gazon-i-planirovka',

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { works } from '@/data/home';
 import styles from './Works.module.css';
 
@@ -10,13 +11,19 @@ export function Works() {
         <h2 className="h2">Участки наших клиентов</h2>
         <div className={styles.grid}>
           {works.map((w, i) => (
-            <figure key={w.title} className={styles.work}>
-              <Image src={w.image} alt={w.title} fill sizes={i === 0 ? '(max-width: 900px) 100vw, 780px' : '(max-width: 900px) 100vw, 400px'} />
-              <figcaption>
+            <Link key={w.title} href={w.href} className={styles.work}>
+              <Image
+                src={w.image}
+                alt={w.title}
+                fill
+                sizes={i === 0 ? '(max-width: 900px) 100vw, 780px' : '(max-width: 900px) 100vw, 400px'}
+                style={{ objectPosition: w.position }}
+              />
+              <span className={styles.cap}>
                 <strong>{w.title}</strong>
                 <span>{w.meta}</span>
-              </figcaption>
-            </figure>
+              </span>
+            </Link>
           ))}
         </div>
       </div>

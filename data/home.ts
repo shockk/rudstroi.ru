@@ -27,11 +27,11 @@ export const advantages = [
   { title: 'Гарантия 3 года', text: 'Если что-то пойдёт не так — приедем и исправим за свой счёт.' },
 ];
 
-// Примеры работ — заглушки, заменить реальными объектами
+// Примеры работ — реальные объекты. Город и объём добавить, когда будут известны.
 export const works = [
-  { title: 'Въезд и площадка под навес, Истра', meta: 'Асфальт 140 м² · 4 дня', image: unsplash('photo-1762117360928-1548ff7ab5a2', 1400) },
-  { title: 'Дорожки в саду, Снегири', meta: 'Плитка 65 м²', image: unsplash('photo-1558521558-037f1cb027c5', 800) },
-  { title: 'Подъезд к посёлку, Дедовск', meta: 'Асфальтная крошка 320 м²', image: unsplash('photo-1782442002533-1aec0cf5a9d8', 800) },
+  { title: 'Полукруглое крыльцо из камня', meta: 'Входная группа частного дома', image: '/images/vhodnye-gruppy/kryltso-polukrugloe-gotovo.webp', position: '50% 38%', href: '/uslugi/vhodnye-gruppy/' },
+  { title: 'Ступени из серой плитки', meta: 'Входная группа частного дома', image: '/images/vhodnye-gruppy/kryltso-seraya-plitka.webp', position: '50% 68%', href: '/uslugi/vhodnye-gruppy/' },
+  { title: 'Крыльцо из клинкера', meta: 'Входная группа частного дома', image: '/images/vhodnye-gruppy/kryltso-klinker.webp', position: '50% 72%', href: '/uslugi/vhodnye-gruppy/' },
 ];
 
 export const winterBlock = {

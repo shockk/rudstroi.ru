@@ -17,7 +17,9 @@ Next.js (App Router, TypeScript, CSS Modules) с сервером; хостин�
 | `app/globals.css` | фирменные цвета и общие стили |
 | `components/` | блоки страниц, у каждого свой `.module.css` |
 | `app/api/lead/route.ts` | приём заявок → Telegram |
-| `design/` | макеты и скриншоты палитр |
+| `public/images/` | фото объектов для сайта (WebP) |
+| `scripts/enhance_photos.py` | обработка фото: выравнивание вертикалей, баланс белого, контраст, WebP. Исходники — в `photos-raw/` (не в git) |
+| `design/` | макеты, скриншоты палитр, сравнение фото до/после |
 
 ## Запуск
 

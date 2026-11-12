@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { Gallery } from '@/components/Gallery';
 import { LeadSection } from '@/components/LeadSection';
 import { ServiceCards } from '@/components/ServiceCards';
 import { getService, services } from '@/data/services';
@@ -34,7 +35,15 @@ export default async function ServicePage({ params }: Props) {
   return (
     <>
       <section className={styles.hero}>
-        <Image src={service.image} alt="" fill priority sizes="100vw" className={styles.bg} />
+        <Image
+          src={service.image}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className={styles.bg}
+          style={service.imagePosition ? { objectPosition: service.imagePosition } : undefined}
+        />
         <div className={`container ${styles.inner}`}>
           <nav className={styles.crumbs}>
             <Link href="/">Главная</Link> / <Link href="/#uslugi">Услуги</Link> / {service.title}
@@ -55,6 +64,16 @@ export default async function ServicePage({ params }: Props) {
           <p className={styles.cities}>Работаем: {site.cities.join(', ')} и окрестности.</p>
         </div>
       </section>
+
+      {service.gallery && (
+        <section className="section" style={{ paddingTop: 0 }}>
+          <div className="container">
+            <div className="eyebrow">Наши работы</div>
+            <h2 className="h2">Фото с объектов</h2>
+            <Gallery photos={service.gallery} />
+          </div>
+        </section>
+      )}
 
       <LeadSection defaultService={service.title} />
 

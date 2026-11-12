@@ -127,6 +127,13 @@ def main() -> None:
         if img is None:
             print(f'{file}: не удалось открыть')
             continue
+        for x0, y0, x1, y1 in spec.get('blur', []):
+            # Размытие (номера машин, лица): [x0, y0, x1, y1] в долях от размера исходника
+            h0, w0 = img.shape[:2]
+            a, b, c, d = int(x0 * w0), int(y0 * h0), int(x1 * w0), int(y1 * h0)
+            region = img[b:d, a:c]
+            small = cv2.resize(region, (max(1, (c - a) // 8), max(1, (d - b) // 8)), interpolation=cv2.INTER_AREA)
+            img[b:d, a:c] = cv2.GaussianBlur(cv2.resize(small, (c - a, d - b), interpolation=cv2.INTER_LINEAR), (0, 0), 4)
         if spec.get('crop_bottom'):
             img = img[: img.shape[0] - int(spec['crop_bottom'])]
         if spec.get('crop'):

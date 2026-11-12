@@ -30,8 +30,8 @@ export const advantages = [
 // Примеры работ — реальные объекты. Город и объём добавить, когда будут известны.
 export const works = [
   { title: 'Полукруглое крыльцо из камня', meta: 'Входная группа частного дома', image: '/images/vhodnye-gruppy/kryltso-polukrugloe-gotovo.webp', position: '50% 38%', href: '/uslugi/vhodnye-gruppy/' },
-  { title: 'Ступени из серой плитки', meta: 'Входная группа частного дома', image: '/images/vhodnye-gruppy/kryltso-seraya-plitka.webp', position: '50% 68%', href: '/uslugi/vhodnye-gruppy/' },
-  { title: 'Крыльцо из клинкера', meta: 'Входная группа частного дома', image: '/images/vhodnye-gruppy/kryltso-klinker.webp', position: '50% 72%', href: '/uslugi/vhodnye-gruppy/' },
+  { title: 'Радиусная дорожка в саду', meta: 'Брусчатка с бордюром', image: '/images/bruschatka/dorozhka-radiusnaya-sad.webp', position: '50% 45%', href: '/uslugi/bruschatka-i-otmostka/' },
+  { title: 'Отмостка вокруг террасы', meta: 'Плитка и облицовка цоколя', image: '/images/bruschatka/otmostka-u-terrasy.webp', position: '50% 55%', href: '/uslugi/bruschatka-i-otmostka/' },
 ];
 
 export const winterBlock = {

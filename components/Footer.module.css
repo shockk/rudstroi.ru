@@ -1,0 +1,32 @@
+.footer {
+  background: var(--deep);
+  color: var(--on-dark-muted);
+  padding: 48px 0;
+  font-size: 14px;
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.inner p {
+  margin: 8px 0 0;
+}
+
+.right {
+  text-align: right;
+}
+
+.right a {
+  color: var(--on-dark);
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .right {
+    text-align: left;
+  }
+}

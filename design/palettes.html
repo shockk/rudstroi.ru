@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ru" data-palette="1">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>РудСтрой — варианты цветов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root[data-palette="1"] { --primary:#16314F; --deep:#0E2137; --accent:#F08A24; --accent-hover:#D97614; --on-accent:#FFFFFF; --bg:#F4F6F9; --surface:#FFFFFF; --text:#16202C; --muted:#5A6B80; --line:#DDE3EA; --soft:#E7EDF4; }
+  :root[data-palette="2"] { --primary:#23272B; --deep:#16181B; --accent:#F5B800; --accent-hover:#DDA600; --on-accent:#1B1D20; --bg:#F5F5F2; --surface:#FFFFFF; --text:#1E2124; --muted:#5E6368; --line:#E2E2DC; --soft:#ECECE6; }
+  :root[data-palette="3"] { --primary:#1F3B2D; --deep:#13271D; --accent:#D9A441; --accent-hover:#C48F2C; --on-accent:#1A2A1F; --bg:#F6F4EE; --surface:#FFFFFF; --text:#1C2A21; --muted:#5B6A5F; --line:#E3DFD3; --soft:#ECE8DC; }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin:0; font-family:'Onest', system-ui, sans-serif; color:var(--text); background:var(--bg); line-height:1.55; -webkit-font-smoothing:antialiased; transition: background .3s; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { max-width:1200px; margin:0 auto; padding:0 24px; }
+
+  /* Переключатель палитр (не часть сайта) */
+  .switcher { position:sticky; top:0; z-index:50; background:#111; color:#fff; font-size:14px; }
+  .switcher .wrap { display:flex; gap:8px; align-items:center; padding-top:10px; padding-bottom:10px; flex-wrap:wrap; }
+  .switcher span { opacity:.7; margin-right:8px; }
+  .switcher button { font:inherit; border:1px solid #444; background:#222; color:#fff; padding:6px 12px; border-radius:6px; cursor:pointer; display:flex; align-items:center; gap:8px; }
+  .switcher button.on { background:#fff; color:#111; border-color:#fff; }
+  .switcher i { width:12px; height:12px; border-radius:3px; display:inline-block; }
+
+  /* Шапка */
+  .topbar { background:var(--deep); color:rgba(255,255,255,.75); font-size:13px; }
+  .topbar .wrap { display:flex; justify-content:space-between; padding-top:8px; padding-bottom:8px; gap:16px; flex-wrap:wrap; }
+  header { background:var(--primary); color:#fff; }
+  header .wrap { display:flex; align-items:center; gap:32px; height:76px; }
+  .logo { font-size:26px; font-weight:800; letter-spacing:.03em; }
+  .logo b { color:var(--accent); font-weight:800; }
+  nav { display:flex; gap:24px; font-size:15px; color:rgba(255,255,255,.85); flex:1; }
+  nav a { white-space:nowrap; }
+  nav a:hover { color:#fff; }
+  @media (max-width: 1100px) { .phone small { display:none; } nav { gap:18px; } }
+  .phone { text-align:right; line-height:1.2; }
+  .phone strong { display:block; font-size:19px; font-weight:700; }
+  .phone small { color:rgba(255,255,255,.6); font-size:12px; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:15px 26px; border-radius:8px; font-weight:600; font-size:16px; border:0; cursor:pointer; font-family:inherit; transition: background .2s; }
+  .btn-accent { background:var(--accent); color:var(--on-accent); }
+  .btn-accent:hover { background:var(--accent-hover); }
+  .btn-ghost { background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.5); }
+  .btn-sm { padding:11px 18px; font-size:15px; }
+
+  /* Первый экран */
+  .hero { position:relative; min-height:600px; display:flex; align-items:center; color:#fff; overflow:hidden; }
+  .hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg, color-mix(in srgb, var(--deep) 92%, transparent) 0%, color-mix(in srgb, var(--deep) 70%, transparent) 45%, color-mix(in srgb, var(--deep) 10%, transparent) 100%); }
+  .hero .wrap { position:relative; z-index:1; width:100%; }
+  .hero-text { max-width:620px; }
+  .tag { display:inline-block; background:var(--accent); color:var(--on-accent); font-size:13px; font-weight:600; padding:6px 12px; border-radius:6px; margin-bottom:20px; }
+  .hero h1 { font-size:52px; line-height:1.08; margin:0 0 20px; font-weight:800; letter-spacing:-.01em; }
+  .hero p { font-size:19px; color:rgba(255,255,255,.85); margin:0 0 32px; }
+  .hero .actions { display:flex; gap:12px; flex-wrap:wrap; }
+  .trust { display:flex; gap:28px; margin-top:44px; flex-wrap:wrap; }
+  .trust div { font-size:14px; color:rgba(255,255,255,.75); }
+  .trust strong { display:block; font-size:30px; color:#fff; font-weight:700; line-height:1.1; }
+
+  /* Секции */
+  section { padding:88px 0; }
+  .eyebrow { color:var(--accent-hover); font-weight:600; font-size:14px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px; }
+  :root[data-palette="2"] .eyebrow { color:#A57C00; }
+  h2 { font-size:38px; line-height:1.15; margin:0 0 40px; font-weight:700; color:var(--primary); }
+  .grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; }
+  .card { background:var(--surface); border-radius:14px; overflow:hidden; border:1px solid var(--line); display:flex; flex-direction:column; transition: transform .2s, box-shadow .2s; }
+  .card:hover { transform:translateY(-3px); box-shadow:0 14px 30px rgba(0,0,0,.08); }
+  .card img { height:210px; width:100%; object-fit:cover; }
+  .card .body { padding:22px 24px 24px; display:flex; flex-direction:column; flex:1; }
+  .card h3 { margin:0 0 8px; font-size:21px; color:var(--primary); }
+  .card p { margin:0 0 18px; color:var(--muted); font-size:15px; flex:1; }
+  .card .more { color:var(--primary); font-weight:600; font-size:15px; display:flex; align-items:center; gap:6px; }
+  .card .more::after { content:'→'; color:var(--accent); font-size:18px; }
+
+  /* Почему мы */
+  .why { background:var(--primary); color:#fff; }
+  .why h2 { color:#fff; }
+  .why .eyebrow { color:var(--accent); }
+  .why-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:32px; }
+  .why-item .num { width:52px; height:52px; border-radius:12px; background:var(--accent); color:var(--on-accent); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:22px; margin-bottom:18px; }
+  .why-item h3 { margin:0 0 8px; font-size:19px; }
+  .why-item p { margin:0; color:rgba(255,255,255,.72); font-size:15px; }
+
+  /* Работы */
+  .works { display:grid; grid-template-columns:2fr 1fr; grid-template-rows:260px 260px; gap:20px; }
+  .work { position:relative; border-radius:14px; overflow:hidden; }
+  .work:first-child { grid-row:span 2; }
+  .work img { width:100%; height:100%; object-fit:cover; }
+  .work .cap { position:absolute; left:0; right:0; bottom:0; padding:22px; color:#fff; background:linear-gradient(0deg, rgba(0,0,0,.72), transparent); }
+  .work .cap strong { display:block; font-size:18px; }
+  .work .cap span { font-size:14px; opacity:.85; }
+
+  /* Зима */
+  .winter { display:grid; grid-template-columns:1fr 1fr; background:var(--surface); border-radius:18px; overflow:hidden; border:1px solid var(--line); }
+  .winter img { width:100%; height:100%; object-fit:cover; min-height:380px; }
+  .winter .body { padding:52px; }
+  .winter h2 { margin-bottom:16px; }
+  .winter ul { padding:0; margin:0 0 30px; list-style:none; }
+  .winter li { padding:10px 0 10px 32px; position:relative; border-bottom:1px solid var(--line); }
+  .winter li::before { content:'✓'; position:absolute; left:0; top:9px; width:22px; height:22px; border-radius:50%; background:var(--soft); color:var(--primary); font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+
+  /* Форма */
+  .lead { background:var(--soft); }
+  .lead-box { display:grid; grid-template-columns:1fr 1.1fr; gap:48px; align-items:center; }
+  .lead-box h2 { margin-bottom:16px; }
+  .lead-box > div > p { color:var(--muted); font-size:17px; margin:0 0 24px; }
+  .contacts-mini { display:flex; gap:10px; flex-wrap:wrap; }
+  .chip { background:var(--surface); border:1px solid var(--line); padding:10px 16px; border-radius:8px; font-weight:600; font-size:15px; color:var(--primary); }
+  form { background:var(--surface); border-radius:16px; padding:32px; border:1px solid var(--line); box-shadow:0 20px 40px rgba(0,0,0,.06); }
+  .step { font-size:13px; color:var(--muted); margin-bottom:6px; }
+  form h3 { margin:0 0 20px; font-size:22px; color:var(--primary); }
+  .opts { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px; }
+  .opt { border:1.5px solid var(--line); border-radius:10px; padding:14px; font-weight:500; font-size:15px; cursor:pointer; }
+  .opt.sel { border-color:var(--primary); background:var(--soft); color:var(--primary); font-weight:600; }
+  .field { display:block; width:100%; border:1.5px solid var(--line); border-radius:10px; padding:14px; font:inherit; margin-bottom:12px; background:var(--bg); }
+  form .btn { width:100%; margin-top:6px; }
+  .legal { font-size:12px; color:var(--muted); margin-top:12px; }
+
+  footer { background:var(--deep); color:rgba(255,255,255,.7); padding:48px 0; font-size:14px; }
+  footer .wrap { display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+  footer .logo { color:#fff; font-size:22px; margin-bottom:8px; }
+
+  @media (max-width: 900px) {
+    nav, .phone small { display:none; }
+    header .wrap { gap:16px; justify-content:space-between; }
+    .hero h1 { font-size:36px; }
+    .grid, .why-grid, .works, .winter, .lead-box { grid-template-columns:1fr; }
+    .works { grid-template-rows:auto; }
+    .work { height:240px; }
+    .work:first-child { grid-row:auto; }
+    .winter .body { padding:28px; }
+    h2 { font-size:30px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="switcher">
+  <div class="wrap">
+    <span>Палитра:</span>
+    <button data-p="1" class="on"><i style="background:#16314F"></i><i style="background:#F08A24"></i>1. Синий и оранжевый</button>
+    <button data-p="2"><i style="background:#23272B"></i><i style="background:#F5B800"></i>2. Графит и жёлтый</button>
+    <button data-p="3"><i style="background:#1F3B2D"></i><i style="background:#D9A441"></i>3. Зелёный и охра</button>
+  </div>
+</div>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>Красногорск · Дедовск · Снегири · Истра</span>
+    <span>Ежедневно 8:00–21:00 · Выезд замерщика бесплатно</span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#">РУД<b>СТРОЙ</b></a>
+    <nav>
+      <a href="#">Услуги</a><a href="#">Спецтехника</a><a href="#">Материалы</a><a href="#">Наши работы</a><a href="#">Контакты</a>
+    </nav>
+    <div class="phone"><strong>+7 (900) 000-00-00</strong><small>Перезвоним за 15 минут</small></div>
+    <a class="btn btn-accent btn-sm" href="#lead">Заявка</a>
+  </div>
+</header>
+
+<div class="hero">
+  <img src="https://images.unsplash.com/photo-1782594700873-bbeefef37e11?w=2000&q=75&auto=format&fit=crop" alt="">
+  <div class="wrap">
+    <div class="hero-text">
+      <span class="tag">Сезон 2026 · свободны даты на май</span>
+      <h1>Асфальт и плитка у вашего дома — под ключ и с гарантией</h1>
+      <p>Подъезды, площадки, дорожки и газон. Своя техника, договор и фиксированная смета после бесплатного замера.</p>
+      <div class="actions">
+        <a class="btn btn-accent" href="#lead">Рассчитать стоимость</a>
+        <a class="btn btn-ghost" href="#works">Смотреть работы</a>
+      </div>
+      <div class="trust">
+        <div><strong>12 лет</strong>работаем в районе</div>
+        <div><strong>480+</strong>участков сделано</div>
+        <div><strong>3 года</strong>гарантия на укладку</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Что делаем</div>
+    <h2>Всё для участка — от планировки до уборки снега</h2>
+    <div class="grid">
+      <a class="card" href="#"><img src="https://images.unsplash.com/photo-1772852311587-329719989e2b?w=800&q=70&auto=format&fit=crop" alt=""><div class="body"><h3>Асфальтирование</h3><p>Въезды, стоянки и площадки у дома. Основание, укладка, каток.</p><span class="more">Подробнее</span></div></a>
+      <a class="card" href="#"><img src="https://images.unsplash.com/photo-1563714193017-5a5fb60bc02b?w=800&q=70&auto=format&fit=crop" alt=""><div class="body"><h3>Тротуарная плитка</h3><p>Продажа и укладка. Дорожки, отмостка, зоны отдыха.</p><span class="more">Подробнее</span></div></a>
+      <a class="card" href="#"><img src="https://images.unsplash.com/photo-1731259240474-5370d9ca53ba?w=800&q=70&auto=format&fit=crop" alt=""><div class="body"><h3>Газон и планировка</h3><p>Выравнивание участка, плодородный грунт, рулонный и посевной газон.</p><span class="more">Подробнее</span></div></a>
+      <a class="card" href="#"><img src="https://images.unsplash.com/photo-1768085091650-e8e89ef57b76?w=800&q=70&auto=format&fit=crop" alt=""><div class="body"><h3>Аренда спецтехники</h3><p>Экскаваторы, самосвалы, катки, погрузчики — с опытным оператором.</p><span class="more">Подробнее</span></div></a>
+      <a class="card" href="#"><img src="https://images.unsplash.com/photo-1709958962346-6243abe88c22?w=800&q=70&auto=format&fit=crop" alt=""><div class="body"><h3>Материалы и вывоз грунта</h3><p>Песок, щебень, ПГС, асфальтная крошка. Доставка от одной машины.</p><span class="more">Подробнее</span></div></a>
+      <a class="card" href="#"><img src="https://images.unsplash.com/photo-1765237908782-1c5573273b6f?w=800&q=70&auto=format&fit=crop" alt=""><div class="body"><h3>Уборка и вывоз снега</h3><p>Расчистим участок и подъезд после снегопада, вывезем снег.</p><span class="more">Подробнее</span></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="eyebrow">Почему нам доверяют</div>
+    <h2>Работаем так, чтобы не пришлось переделывать</h2>
+    <div class="why-grid">
+      <div class="why-item"><div class="num">1</div><h3>Договор и смета</h3><p>Цена фиксируется после замера и не растёт в процессе работ.</p></div>
+      <div class="why-item"><div class="num">2</div><h3>Своя техника</h3><p>Не зависим от субподрядчиков — приезжаем в назначенный день.</p></div>
+      <div class="why-item"><div class="num">3</div><h3>Правильное основание</h3><p>Геотекстиль, щебень, трамбовка — плитка и асфальт не просядут.</p></div>
+      <div class="why-item"><div class="num">4</div><h3>Гарантия 3 года</h3><p>Если что-то пойдёт не так — приедем и исправим за свой счёт.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="wrap">
+    <div class="eyebrow">Наши работы</div>
+    <h2>Участки наших клиентов</h2>
+    <div class="works">
+      <div class="work"><img src="https://images.unsplash.com/photo-1762117360928-1548ff7ab5a2?w=1400&q=70&auto=format&fit=crop" alt=""><div class="cap"><strong>Въезд и площадка под навес, Истра</strong><span>Асфальт 140 м² · 4 дня</span></div></div>
+      <div class="work"><img src="https://images.unsplash.com/photo-1558521558-037f1cb027c5?w=800&q=70&auto=format&fit=crop" alt=""><div class="cap"><strong>Дорожки в саду, Снегири</strong><span>Плитка 65 м²</span></div></div>
+      <div class="work"><img src="https://images.unsplash.com/photo-1782442002533-1aec0cf5a9d8?w=800&q=70&auto=format&fit=crop" alt=""><div class="cap"><strong>Подъезд к посёлку, Дедовск</strong><span>Асфальтная крошка 320 м²</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="winter">
+      <img src="https://images.unsplash.com/photo-1676903826883-cbbd7703f2f4?w=1200&q=70&auto=format&fit=crop" alt="">
+      <div class="body">
+        <div class="eyebrow">Зима</div>
+        <h2>Снег не помешает выехать из дома</h2>
+        <ul>
+          <li>Приедем в день обращения</li>
+          <li>Расчистка подъезда, парковки и дорожек</li>
+          <li>Вывоз снега самосвалами</li>
+          <li>Можно договориться на весь сезон</li>
+        </ul>
+        <a class="btn btn-accent" href="#lead">Вызвать технику</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lead" id="lead">
+  <div class="wrap lead-box">
+    <div>
+      <div class="eyebrow">Расчёт стоимости</div>
+      <h2>Расскажите о задаче — перезвоним с ценой</h2>
+      <p>Ответим на вопросы, приедем на бесплатный замер и составим смету. Можно приложить фото участка.</p>
+      <div class="contacts-mini"><span class="chip">+7 (900) 000-00-00</span><span class="chip">WhatsApp</span><span class="chip">Telegram</span><span class="chip">MAX</span></div>
+    </div>
+    <form onsubmit="return false">
+      <div class="step">Шаг 1 из 3</div>
+      <h3>Что нужно сделать?</h3>
+      <div class="opts">
+        <div class="opt sel">Асфальт</div><div class="opt">Плитка</div>
+        <div class="opt">Газон / планировка</div><div class="opt">Техника / материалы</div>
+      </div>
+      <input class="field" placeholder="Площадь, м² — например, 120">
+      <input class="field" placeholder="Телефон">
+      <button class="btn btn-accent">Получить расчёт</button>
+      <div class="legal">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных</div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><div class="logo">РУД<b>СТРОЙ</b></div>Благоустройство участков, спецтехника, материалы</div>
+    <div>Красногорск · Дедовск · Снегири · Истра<br>+7 (900) 000-00-00</div>
+  </div>
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll('.switcher button');
+  function setPalette(p) {
+    document.documentElement.dataset.palette = p;
+    buttons.forEach(b => b.classList.toggle('on', b.dataset.p === p));
+    history.replaceState(null, '', '#p' + p);
+  }
+  buttons.forEach(b => b.addEventListener('click', () => setPalette(b.dataset.p)));
+  const m = location.hash.match(/^#p([123])$/);
+  if (m) setPalette(m[1]);
+  document.querySelectorAll('.opt').forEach(o => o.addEventListener('click', () => {
+    document.querySelectorAll('.opt').forEach(x => x.classList.remove('sel'));
+    o.classList.add('sel');
+  }));
+</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+.form {
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 40px rgb(0 0 0 / 0.06);
+}
+
+.form h3 {
+  margin-bottom: 18px;
+  font-size: 22px;
+  color: var(--primary);
+}
+
+.opts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.opt {
+  font: inherit;
+  text-align: left;
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.opt:hover {
+  border-color: var(--muted);
+}
+
+.sel,
+.sel:hover {
+  border-color: var(--primary);
+  background: var(--soft);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.field {
+  display: block;
+  width: 100%;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  padding: 13px 14px;
+  font: inherit;
+  font-size: 15px;
+  margin-bottom: 12px;
+  background: var(--bg);
+  color: var(--text);
+  resize: vertical;
+}
+
+.field:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: var(--muted);
+  margin: 4px 0 14px;
+}
+
+.consent input {
+  margin-top: 3px;
+  accent-color: var(--primary);
+}
+
+.consent a {
+  text-decoration: underline;
+}
+
+.error {
+  color: var(--danger);
+  font-size: 14px;
+  margin: 0 0 12px;
+}
+
+.submit {
+  width: 100%;
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.done {
+  text-align: center;
+  padding: 48px 32px;
+}
+
+.done p {
+  color: var(--muted);
+  margin: 0 0 20px;
+}
+
+.doneIcon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: var(--soft);
+  color: var(--success);
+  font-size: 30px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link {
+  font: inherit;
+  background: none;
+  border: 0;
+  color: var(--primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (max-width: 560px) {
+  .form {
+    padding: 22px;
+  }
+  .opts,
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

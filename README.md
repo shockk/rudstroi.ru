@@ -19,6 +19,7 @@ Next.js (App Router, TypeScript, CSS Modules) с сервером; хостин�
 | `app/api/lead/route.ts` | приём заявок → Telegram |
 | `public/images/` | фото объектов для сайта (WebP) |
 | `scripts/enhance_photos.py` | обработка фото: выравнивание вертикалей, баланс белого, контраст, WebP. Исходники — в `photos-raw/` (не в git) |
+| `scripts/build-favicon.mjs` | сборка фавикона и иконок приложения: `node scripts/build-favicon.mjs` |
 | `design/` | макеты, скриншоты палитр, сравнение фото до/после |
 
 ## Запуск

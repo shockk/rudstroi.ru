@@ -5,14 +5,15 @@ export const site = {
   logo: { first: 'РУД', second: 'СТРОЙ' },
   tagline: 'Благоустройство участков, спецтехника, материалы',
   url: 'https://rudstroi.ru',
-  phone: '+7 (900) 000-00-00', // заглушка
-  phoneHref: 'tel:+79000000000', // заглушка
+  phone: '+7 (901) 401-31-21',
+  phoneHref: 'tel:+79014013121',
+  email: 'rud.fahradyan@mail.ru',
   hours: 'Ежедневно 8:00–21:00', // заглушка
   callbackPromise: 'Перезвоним за 15 минут',
   cities: ['Красногорск', 'Дедовск', 'Снегири', 'Истра'],
   messengers: [
-    { name: 'WhatsApp', href: 'https://wa.me/79000000000' }, // заглушка
-    { name: 'Telegram', href: 'https://t.me/' }, // заглушка
+    { name: 'WhatsApp', href: 'https://wa.me/79014013121' }, // проверить, что WhatsApp на этом номере
+    { name: 'Telegram', href: 'https://t.me/+79014013121' }, // проверить, что Telegram на этом номере и поиск по номеру разрешён
     { name: 'MAX', href: '#' }, // заглушка
   ],
   // Цифры доверия — заглушки, заменить реальными

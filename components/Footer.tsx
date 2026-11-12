@@ -13,6 +13,8 @@ export function Footer() {
         <div className={styles.right}>
           <p>{site.cities.join(' · ')}</p>
           <a href={site.phoneHref}>{site.phone}</a>
+          <br />
+          <a href={`mailto:${site.email}`}>{site.email}</a>
         </div>
       </div>
     </footer>

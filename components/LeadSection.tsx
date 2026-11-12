@@ -16,6 +16,9 @@ export function LeadSection({ defaultService }: { defaultService?: string }) {
             <a className={styles.chip} href={site.phoneHref}>
               {site.phone}
             </a>
+            <a className={styles.chip} href={`mailto:${site.email}`}>
+              {site.email}
+            </a>
             {site.messengers.map((m) => (
               <a key={m.name} className={styles.chip} href={m.href} target="_blank" rel="noopener noreferrer">
                 {m.name}

@@ -67,8 +67,10 @@ export async function POST(req: Request) {
     lead.page && `Страница: ${escapeHtml(lead.page)}`,
   ].filter(Boolean);
 
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
+  // trim и снятие кавычек: значения часто вставляют в панель с пробелами или в кавычках
+  const clean = (v?: string) => v?.trim().replace(/^["']|["']$/g, '') || undefined;
+  const token = clean(process.env.TELEGRAM_BOT_TOKEN);
+  const chatId = clean(process.env.TELEGRAM_CHAT_ID);
 
   if (!token || !chatId) {
     if (process.env.NODE_ENV !== 'production') {

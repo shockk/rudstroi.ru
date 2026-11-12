@@ -13,3 +13,15 @@
 .second {
   color: var(--accent);
 }
+
+@media (max-width: 600px) {
+  .logo {
+    font-size: 21px;
+  }
+}
+
+@media (max-width: 400px) {
+  .logo {
+    font-size: 19px;
+  }
+}

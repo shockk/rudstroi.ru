@@ -7,7 +7,6 @@ import styles from './LeadForm.module.css';
 type Status = 'idle' | 'sending' | 'success' | 'error';
 
 export function LeadForm({ services, defaultService }: { services: string[]; defaultService?: string }) {
-  const [service, setService] = useState(defaultService ?? services[0]);
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState('');
 
@@ -19,10 +18,11 @@ export function LeadForm({ services, defaultService }: { services: string[]; def
     const digits = (data.phone ?? '').replace(/\D/g, '');
     if (digits.length < 10) {
       setError('Укажите телефон, чтобы мы могли перезвонить');
+      form.querySelector<HTMLInputElement>('[name=phone]')?.focus();
       return;
     }
     if (!data.consent) {
-      setError('Нужно согласие на обработку персональных данных');
+      setError('Отметьте согласие на обработку персональных данных');
       return;
     }
 
@@ -32,7 +32,7 @@ export function LeadForm({ services, defaultService }: { services: string[]; def
       const res = await fetch('/api/lead/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, service, page: window.location.pathname }),
+        body: JSON.stringify({ ...data, page: window.location.pathname }),
       });
       if (!res.ok) throw new Error(String(res.status));
       setStatus('success');
@@ -55,56 +55,82 @@ export function LeadForm({ services, defaultService }: { services: string[]; def
     );
   }
 
+  const clearError = () => error && setError('');
+
   return (
     <form className={styles.form} onSubmit={onSubmit} noValidate>
-      <h3>Что нужно сделать?</h3>
-      <div className={styles.opts} role="radiogroup" aria-label="Услуга">
-        {services.map((s) => (
-          <button
-            type="button"
-            key={s}
-            role="radio"
-            aria-checked={service === s}
-            className={`${styles.opt} ${service === s ? styles.sel : ''}`}
-            onClick={() => setService(s)}
-          >
-            {s}
-          </button>
-        ))}
-      </div>
+      <h3>Оставьте телефон — перезвоним</h3>
 
-      <div className={styles.row}>
-        <input className={styles.field} name="area" placeholder="Площадь или объём, например 120 м²" maxLength={100} />
-        <input className={styles.field} name="place" placeholder="Город или посёлок" maxLength={100} />
-      </div>
-      <div className={styles.row}>
-        <input className={styles.field} name="name" placeholder="Как к вам обращаться" maxLength={100} autoComplete="name" />
+      {/* Телефон — единственное обязательное поле, поэтому он первый */}
+      <label className={styles.label}>
+        Телефон
         <input
-          className={styles.field}
+          className={`${styles.field} ${styles.phone}`}
           name="phone"
           type="tel"
-          placeholder="Телефон *"
+          inputMode="tel"
+          placeholder="+7 900 000-00-00"
           maxLength={30}
           autoComplete="tel"
           required
-          onChange={() => error && setError('')}
+          onChange={clearError}
         />
+      </label>
+
+      <label className={styles.label}>
+        Что нужно сделать
+        <select className={styles.field} name="service" defaultValue={defaultService ?? ''}>
+          <option value="">Пока не знаю, нужна консультация</option>
+          {services.map((s) => (
+            <option key={s} value={s}>
+              {s}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <div className={styles.row}>
+        <label className={styles.label}>
+          Как к вам обращаться
+          <input className={styles.field} name="name" placeholder="Имя" maxLength={100} autoComplete="name" />
+        </label>
+        <label className={styles.label}>
+          Город или посёлок
+          <input className={styles.field} name="place" placeholder="Истра" maxLength={100} />
+        </label>
       </div>
-      <textarea className={styles.field} name="comment" placeholder="Комментарий" rows={3} maxLength={2000} />
+
+      <label className={styles.label}>
+        Комментарий
+        <textarea
+          className={styles.field}
+          name="comment"
+          placeholder="Площадь, объём, пожелания — если уже знаете"
+          rows={2}
+          maxLength={2000}
+        />
+      </label>
 
       {/* Ловушка для ботов: поле скрыто от людей */}
       <input className={styles.hp} name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
+      {/* Согласие человек отмечает сам (152-ФЗ) — галочка по умолчанию не стоит */}
       <label className={styles.consent}>
-        <input type="checkbox" name="consent" defaultChecked onChange={() => error && setError('')} />
+        <input type="checkbox" name="consent" onChange={clearError} />
         <span>
           Согласен на обработку персональных данных в соответствии с <Link href="/privacy/">политикой</Link>
         </span>
       </label>
 
-      {error && <p className={styles.error}>{error}</p>}
+      {error && (
+        <p className={styles.error} role="alert">
+          {error}
+        </p>
+      )}
       {status === 'error' && (
-        <p className={styles.error}>Не получилось отправить заявку. Позвоните нам или попробуйте ещё раз.</p>
+        <p className={styles.error} role="alert">
+          Не получилось отправить заявку. Позвоните нам или попробуйте ещё раз.
+        </p>
       )}
 
       <button className={`btn btn-accent ${styles.submit}`} disabled={status === 'sending'}>

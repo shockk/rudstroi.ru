@@ -61,6 +61,13 @@
   font-size: 12px;
 }
 
+.phoneIcon {
+  display: none;
+  width: 22px;
+  height: 22px;
+  fill: var(--on-accent);
+}
+
 .cta {
   padding: 11px 18px;
   font-size: 15px;
@@ -71,15 +78,20 @@
     display: none;
   }
   .inner {
-    justify-content: space-between;
-    gap: 16px;
+    gap: 12px;
+  }
+  .phone {
+    margin-left: auto;
   }
 }
 
 @media (max-width: 600px) {
   .topbar span:last-child,
-  .phone small,
-  .cta {
+  .phone small {
+    display: none;
+  }
+  /* Двойной класс, чтобы перебить display из глобального .btn */
+  .cta.cta {
     display: none;
   }
   .inner {
@@ -87,5 +99,30 @@
   }
   .phone strong {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .phone strong {
+    font-size: 14px;
+  }
+}
+
+/* Совсем узкие экраны: вместо номера — кнопка звонка */
+@media (max-width: 350px) {
+  .phone strong {
+    display: none;
+  }
+  .phoneIcon {
+    display: block;
+  }
+  .phone {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius);
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

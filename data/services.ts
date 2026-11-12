@@ -91,6 +91,26 @@ export const services: Service[] = [
     season: 'summer',
   },
   {
+    slug: 'naruzhnye-seti',
+    title: 'Наружные сети водоснабжения и канализации',
+    short: 'Водопровод и канализация от дома до колодца или центральной сети: траншея, трубы, колодцы.',
+    description: [
+      'Прокладываем наружные сети к частному дому: водопровод от скважины или центральной сети, канализацию до септика или коллектора.',
+      'Копаем траншею своей техникой, укладываем трубы на песчаную подушку с нужным уклоном, монтируем колодцы из бетонных колец, засыпаем и восстанавливаем покрытие — газон, плитку или асфальт.',
+    ],
+    image: local('naruzhnye-seti', 'transheya-ekskavator-truby'),
+    imagePosition: '50% 30%',
+    season: 'summer',
+    gallery: [
+      { src: local('naruzhnye-seti', 'transheya-ekskavator-truby'), alt: 'Экскаватор копает траншею, рядом лежат канализационные трубы', caption: 'Траншея под канализацию' },
+      { src: local('naruzhnye-seti', 'kolodets-kolco-transheya'), alt: 'Бетонное кольцо колодца у траншеи, экскаватор-погрузчик', caption: 'Монтаж колодца' },
+      { src: local('naruzhnye-seti', 'razgruzka-kolec-manipulyator'), alt: 'Разгрузка бетонных колец манипулятором', caption: 'Доставка колец манипулятором' },
+      { src: local('naruzhnye-seti', 'truba-v-transhee-vdol-dorozhki'), alt: 'Канализационная труба в траншее вдоль дорожки из плитки', caption: 'Труба в траншее вдоль дорожки' },
+      { src: local('naruzhnye-seti', 'truba-peschanaya-podushka'), alt: 'Труба на песчаной подушке в траншее', caption: 'Укладка на песчаную подушку' },
+      { src: local('naruzhnye-seti', 'kolca-na-obekte'), alt: 'Бетонные кольца и трубы на объекте', caption: 'Кольца и трубы на объекте' },
+    ],
+  },
+  {
     slug: 'arenda-spectehniki',
     title: 'Аренда спецтехники',
     short: 'Экскаваторы, самосвалы, катки, погрузчики — с опытным оператором.',

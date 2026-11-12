@@ -129,6 +129,11 @@ def main() -> None:
             continue
         if spec.get('crop_bottom'):
             img = img[: img.shape[0] - int(spec['crop_bottom'])]
+        if spec.get('crop'):
+            # [x0, y0, x1, y1] в долях от размера кадра
+            x0, y0, x1, y1 = spec['crop']
+            h0, w0 = img.shape[:2]
+            img = img[int(y0 * h0) : int(y1 * h0), int(x0 * w0) : int(x1 * w0)]
         auto, why = detect_tilt(img)
         angle = spec.get('angle')
         if angle is None:
